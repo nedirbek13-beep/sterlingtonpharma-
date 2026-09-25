@@ -1,0 +1,59 @@
+<!--meta {"title":"Products | SterliX range — solutions for infusion, powders for infusion and oral suspensions","description":"Browse the 19-product SterliX range from Sterlington Pharma: injectable antibiotics, IV infusions and oral suspensions with generic name, strength, dosage form and pack size. B2B supply only.","path":"/products","nav":"products","bodyClass":"page-products","priority":"0.9","out":"products.html","extraScripts":"<script src=\"/assets/js/catalogue.js\" defer></script>"} -->
+<section class="page-hero" aria-labelledby="products-title">
+  <canvas class="field" data-field data-field-color="#0b5094" data-field-spacing="100" data-field-alpha="0.8" aria-hidden="true"></canvas>
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><span aria-current="page">Products</span></li></ol></nav>
+    <p class="eyebrow" data-seq="1">SterliX product range</p>
+    <h1 class="h-display" id="products-title" data-seq="2">{{productCount}} products. <em>Every one documented.</em></h1>
+    <p class="lead" data-seq="3">Injectable antibiotics, IV infusions and oral suspensions from GMP-certified manufacturers, listed with generic name, strength, dosage form and pack size. Supplied to licensed organisations only.</p>
+  </div>
+  <div class="facet-edge facet-edge--bottom" aria-hidden="true"></div>
+</section>
+
+<section class="catalogue" aria-labelledby="catalogue-title">
+  <div class="container">
+    <h2 class="visually-hidden" id="catalogue-title">Product catalogue</h2>
+    <form class="toolbar" role="search" aria-label="Filter products" data-toolbar>
+      <div class="toolbar-search">
+        <label class="visually-hidden" for="q">Search products</label>
+        <svg class="toolbar-search-icon" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12.2 12.2 16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input class="toolbar-input" id="q" name="q" type="search" placeholder="Search by name, active ingredient or code" autocomplete="off" data-filter-q>
+      </div>
+      <fieldset class="chips" data-filter-cat>
+        <legend class="visually-hidden">Category</legend>
+        <label class="chip"><input type="radio" name="cat" value="" checked><span>All</span></label>
+        <label class="chip"><input type="radio" name="cat" value="inject"><span>Injectable Antibiotics <b>{{countInject}}</b></span></label>
+        <label class="chip"><input type="radio" name="cat" value="infusion"><span>IV Infusions <b>{{countInfusion}}</b></span></label>
+        <label class="chip"><input type="radio" name="cat" value="oral"><span>Oral Suspensions <b>{{countOral}}</b></span></label>
+      </fieldset>
+      <div class="toolbar-selects">
+        <div class="sel"><label class="sel-label" for="f-form">Dosage form</label><select id="f-form" name="form" data-filter-form><option value="">All forms</option><option value="solution">Solution for infusion ({{countSolution}})</option><option value="powder">Powder for infusion ({{countPowder}})</option><option value="suspension">Oral suspension ({{countSuspension}})</option></select></div>
+        <div class="sel"><label class="sel-label" for="f-class">Therapeutic class</label><select id="f-class" name="class" data-filter-class><option value="">All classes</option><option value="antibiotic">Antibiotic</option><option value="antifungal">Antifungal</option><option value="analgesic">Analgesic</option><option value="metabolic">Metabolic</option></select></div>
+        <button class="btn btn--ghost btn--sm toolbar-reset" type="reset" data-filter-reset hidden>Clear filters</button>
+      </div>
+      <p class="toolbar-count" role="status" aria-live="polite" data-count>Showing {{productCount}} of {{productCount}} products</p>
+    </form>
+
+{{{catalogueSections}}}
+
+    <div class="empty" data-empty hidden>
+      <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10h20l8 8v20a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z"/><path d="M30 10v8h8M16 26h16M16 32h10"/></g></svg>
+      <h3 class="empty-h">No products match those filters</h3>
+      <p>Try a different spelling, clear a filter, or <a href="/contact?type=other">ask us about a product</a> that is not listed.</p>
+      <button class="btn btn--secondary" type="button" data-filter-reset>Clear all filters</button>
+    </div>
+
+    <aside class="catalogue-note" data-reveal>
+      <div class="doc-card">
+        <h3 class="doc-card-h">Documentation with every order</h3>
+        <p>Certificates of Analysis, the manufacturer's GMP certificate and batch records accompany each supply. Storage conditions and leaflets are provided with product documentation.</p>
+        <a class="link" href="/quality">Our quality process<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="doc-card doc-card--muted">
+        <h3 class="doc-card-h">Not listed?</h3>
+        <p>The range is expanding. If you are looking for a product or presentation that is not shown, tell us what you need and we will confirm availability.</p>
+        <a class="link" href="/contact?type=other">Ask about a product<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </aside>
+  </div>
+</section>

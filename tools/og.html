@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>OG image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&family=Inter:wght@500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#fff}
+.og{position:relative;width:1200px;height:630px;background:linear-gradient(180deg,#fff,#f3f6fa);overflow:hidden}
+.og canvas{position:absolute;inset:0;-webkit-mask-image:radial-gradient(90% 100% at 78% 50%,#000 30%,transparent 72%);mask-image:radial-gradient(90% 100% at 78% 50%,#000 30%,transparent 72%)}
+.og-copy{position:absolute;left:72px;top:96px;width:560px}
+.og-logo{display:flex;align-items:center;gap:14px;margin-bottom:44px}
+.og-logo img{width:30px;height:46px}
+.og-logo b{font-family:'Source Serif 4',serif;font-weight:500;font-size:26px;letter-spacing:.16em;text-transform:uppercase;color:#1a2235;display:block;line-height:1}
+.og-logo small{display:block;font:500 11px/1 Inter,sans-serif;letter-spacing:.36em;text-transform:uppercase;color:#6b7894;margin-top:7px}
+.og h1{font-family:'Source Serif 4',serif;font-weight:500;font-size:54px;line-height:1.06;letter-spacing:-.018em;color:#1a2235}
+.og h1 em{font-style:italic;font-weight:400;color:#0b5094}
+.og p{margin-top:24px;font:500 19px/1.5 Inter,sans-serif;color:#6b7894}
+.og-facts{position:absolute;left:72px;bottom:64px;display:flex;gap:40px;font:600 12px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6b7894}
+.og-facts b{display:block;font-family:'Source Serif 4',serif;font-weight:500;font-size:26px;color:#1a2235;letter-spacing:0;text-transform:none;margin-top:8px}
+.og-stage{position:absolute;right:40px;bottom:0;width:520px;height:560px}
+.og-pack{position:absolute;bottom:54px;filter:drop-shadow(0 26px 24px rgba(26,34,53,.18))}
+.og-pack img{height:100%;width:auto}
+.og-shelf{position:absolute;left:0;right:20px;bottom:54px;height:1px;background:linear-gradient(90deg,transparent,rgba(26,34,53,.2) 20%,rgba(26,34,53,.2) 80%,transparent)}
+</style></head>
+<body><div class="og">
+<canvas data-field data-field-color="#0b5094" data-field-spacing="90" data-field-alpha="1"></canvas>
+<div class="og-copy">
+  <div class="og-logo"><img src="/assets/img/monogram@2x.png" alt=""><span><b>Sterlington</b><small>Pharma</small></span></div>
+  <h1>Sterile injectables and oral medicines, <em>supplied with precision.</em></h1>
+  <p>Solutions for infusion, powders for infusion and oral suspensions for hospitals and licensed distributors.</p>
+</div>
+<div class="og-facts"><span>Products<b>19</b></span><span>Dosage forms<b>3</b></span><span>Company no.<b>17067636</b></span></div>
+<div class="og-stage">
+  <div class="og-shelf"></div>
+  <div class="og-pack" style="left:0;height:300px;z-index:1"><img src="/assets/products/levofloxacin-cut.webp" alt=""></div>
+  <div class="og-pack" style="left:110px;height:340px;z-index:2"><img src="/assets/products/cephalexin-cut.webp" alt=""></div>
+  <div class="og-pack" style="left:215px;height:400px;z-index:4"><img src="/assets/products/meropenem-cut.webp" alt=""></div>
+  <div class="og-pack" style="left:330px;height:350px;z-index:3"><img src="/assets/products/amoxicillin-cut.webp" alt=""></div>
+  <div class="og-pack" style="left:385px;height:210px;z-index:5"><img src="/assets/products/ciprofloxacin-cut.webp" alt=""></div>
+</div>
+</div>
+<script src="/assets/js/site.js" defer></script>
+</body></html>

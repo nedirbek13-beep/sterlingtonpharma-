@@ -1,0 +1,12 @@
+# Files that must not be uploaded as static assets
+src/
+tools/
+lib/
+functions/
+worker.js
+wrangler.jsonc
+*.md
+.git/
+.gitignore
+.assetsignore
+node_modules/

@@ -1,0 +1,18 @@
+{
+  "name": "Sterlington Pharma",
+  "legalName": "Sterlington Injectable Pharmaceutical UK Ltd",
+  "brandLine": "SterliX",
+  "domain": "https://sterlingtonpharma.com",
+  "phone": "+44 7376 237959",
+  "phoneHref": "tel:+447376237959",
+  "email": "info@sterlingtonpharma.com",
+  "companyNumber": "17067636",
+  "incorporated": "3 March 2026",
+  "incorporatedISO": "2026-03-03",
+  "jurisdiction": "England and Wales",
+  "registeredOffice": "50 Princes Street, Ipswich, United Kingdom, IP1 1RJ",
+  "sic": [ { "code": "46460", "label": "Wholesale of pharmaceutical goods" }, { "code": "46900", "label": "Non-specialised wholesale trade" } ],
+  "director": "Daniel Milchev Petkov",
+  "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17067636",
+  "year": 2026
+}

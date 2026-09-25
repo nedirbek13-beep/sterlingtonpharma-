@@ -1,0 +1,67 @@
+<section class="pd-hero" style="--p:{{accent}};--p-ink:{{ink}}">
+  <canvas class="field pd-field" data-field data-field-color="{{accent}}" data-field-spacing="86" data-field-alpha="0.9" aria-hidden="true"></canvas>
+  <div class="container pd-hero-in">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/products">Products</a></li><li><a href="{{catAnchor}}">{{p.catLabel}}</a></li><li><span aria-current="page">{{p.name}}</span></li></ol></nav>
+    <div class="pd-grid">
+      <div class="pd-copy">
+        <p class="eyebrow eyebrow--accent" data-seq="1">{{formTag}}</p>
+        <h1 class="h-display pd-title" data-seq="2">{{p.name}}</h1>
+        <p class="pd-inn" data-seq="3"><span class="pd-active">{{p.active}}</span><span class="pd-sep" aria-hidden="true"></span><span>{{p.class}}</span></p>
+        <div class="pd-strengths" data-seq="3"><span class="pd-strengths-label">Strength</span>{{{strengthChips}}}</div>
+        <p class="lead pd-desc" data-seq="4">{{p.desc}}</p>
+        <div class="pd-actions" data-seq="5">
+          <a class="btn btn--primary" href="/contact?type=quotation&amp;product={{p.slug}}">Request a quotation</a>
+          <a class="btn btn--secondary" href="/contact?type=documentation&amp;product={{p.slug}}">Request documentation</a>
+        </div>
+        <p class="pd-note" data-seq="5">Product code <code>{{p.code}}</code> · Information for healthcare professionals and licensed organisations.</p>
+      </div>
+      <div class="pd-stage pd-stage--{{p.form}}" data-parallax aria-hidden="true">
+        <span class="pd-facets"></span>
+        <div class="pd-pack" data-depth="1">{{{packPicture}}}</div>
+        <span class="pd-stage-tag">{{formTag}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="facet-edge facet-edge--bottom" aria-hidden="true"></div>
+</section>
+
+<section class="section pd-specs" aria-labelledby="pd-spec-title">
+  <div class="container pd-specs-grid">
+    <div data-reveal>
+      <p class="eyebrow">Specification</p>
+      <h2 class="h-section" id="pd-spec-title">Product details</h2>
+      <dl class="spec">
+{{{specRows}}}
+      </dl>
+    </div>
+    <aside class="pd-aside" data-reveal data-reveal-delay="1">
+      <div class="doc-card">
+        <h3 class="doc-card-h">Documentation</h3>
+        <p>Supplied with orders and available to qualified partners on request:</p>
+        <ul class="check-list">
+          <li>Certificate of Analysis (CoA)</li>
+          <li>GMP certificate of the manufacturer</li>
+          <li>Batch records and import documentation</li>
+        </ul>
+        <a class="link" href="/contact?type=documentation&amp;product={{p.slug}}">Request documents<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="doc-card doc-card--muted">
+        <h3 class="doc-card-h">Availability and storage</h3>
+        <p>Supply depends on the registration status of the product in the destination market and on partner qualification. Storage conditions and the product leaflet are not published on this website; they are provided with the product documentation.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="pd-related-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Related products</p>
+      <h2 class="h-section" id="pd-related-title">More from {{p.catLabel}}</h2>
+    </div>
+    <div class="pgrid pgrid--3" data-reveal data-reveal-delay="1">
+{{{relatedCards}}}
+    </div>
+    <p class="section-more" data-reveal><a class="btn btn--secondary" href="/products">Browse all {{productCount}} products</a></p>
+  </div>
+</section>

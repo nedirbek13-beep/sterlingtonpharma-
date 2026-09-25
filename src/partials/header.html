@@ -1,0 +1,53 @@
+<header class="site-header" data-site-header>
+  <div class="container header-in">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/assets/img/monogram.png" srcset="/assets/img/monogram@2x.png 2x" width="22" height="34" alt="" aria-hidden="true">
+      <span class="brand-text"><span class="brand-name">Sterlington</span><span class="brand-sub">Pharma</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li class="nav-item nav-item--menu" data-nav-menu>
+          <a class="nav-link{{{nav_products}}}" href="/products">Products</a>
+          <button class="nav-menu-btn" type="button" aria-expanded="false" aria-controls="menu-products" aria-label="Product categories"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-menu" id="menu-products">
+            <div class="nav-menu-in">
+              <ul class="nav-menu-list">{{{navCategories}}}</ul>
+              <div class="nav-menu-aside">
+                <p class="nav-menu-note"><strong>{{productCount}} products</strong> across solutions for infusion, powders for infusion and oral suspensions.</p>
+                <a class="link" href="/products">View the full catalogue<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a class="nav-link{{{nav_quality}}}" href="/quality">Quality</a></li>
+        <li><a class="nav-link{{{nav_company}}}" href="/company">Company</a></li>
+        <li><a class="nav-link{{{nav_partners}}}" href="/partners">Partners</a></li>
+        <li><a class="nav-link{{{nav_contact}}}" href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--primary btn--sm header-cta" href="/contact?type=quotation">Request a quotation</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-nav-toggle><span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
+    </div>
+  </div>
+</header>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu" data-mobile-menu hidden>
+    <div class="mobile-menu-in">
+      <nav aria-label="Mobile">
+        <ul class="mobile-list">
+          <li><a href="/products">Products <span class="mobile-count">{{productCount}}</span></a>
+            <ul class="mobile-sub">{{{navCategories}}}</ul>
+          </li>
+          <li><a href="/quality">Quality</a></li>
+          <li><a href="/company">Company</a></li>
+          <li><a href="/partners">Partners</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu-foot">
+        <a class="btn btn--primary btn--block" href="/contact?type=quotation">Request a quotation</a>
+        <a class="mobile-contact" href="{{site.phoneHref}}">{{site.phone}}</a>
+        <a class="mobile-contact" href="mailto:{{site.email}}">{{site.email}}</a>
+      </div>
+    </div>
+  </div>

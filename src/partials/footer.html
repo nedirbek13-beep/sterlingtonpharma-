@@ -1,0 +1,32 @@
+<footer class="site-footer">
+  <div class="facet-edge facet-edge--footer" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo" src="/assets/img/logo-white.png" srcset="/assets/img/logo-white@2x.png 2x" width="150" height="103" alt="Sterlington Pharma" loading="lazy" decoding="async">
+        <p>Sterlington Injectable Pharmaceutical UK Ltd supplies sterile injectable and oral medicines to hospitals, licensed distributors and institutional buyers. Not a consumer pharmacy.</p>
+      </div>
+      <nav class="footer-col" aria-labelledby="f-products">
+        <h2 class="footer-h" id="f-products">Products</h2>
+        <ul>{{{footerCategories}}}<li><a href="/products">All {{productCount}} products</a></li></ul>
+      </nav>
+      <nav class="footer-col" aria-labelledby="f-company">
+        <h2 class="footer-h" id="f-company">Company</h2>
+        <ul><li><a href="/quality">Quality &amp; documentation</a></li><li><a href="/company">About Sterlington</a></li><li><a href="/partners">Partners &amp; distribution</a></li><li><a href="/contact">Contact</a></li></ul>
+      </nav>
+      <div class="footer-col" aria-labelledby="f-contact">
+        <h2 class="footer-h" id="f-contact">Contact</h2>
+        <ul>
+          <li><a href="{{site.phoneHref}}">{{site.phone}}</a></li>
+          <li><a href="mailto:{{site.email}}">{{site.email}}</a></li>
+          <li><address class="footer-address">Registered office:<br>50 Princes Street, Ipswich,<br>United Kingdom, IP1 1RJ</address></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{year}} {{site.legalName}}. Registered in {{site.jurisdiction}}, company no. <a href="{{site.companiesHouseUrl}}" rel="noopener" target="_blank">{{site.companyNumber}}</a>. All rights reserved.</p>
+      <ul class="footer-legal"><li><a href="/privacy">Privacy policy</a></li><li><a href="/legal">Legal &amp; product information</a></li><li><a href="/sitemap.xml">Sitemap</a></li></ul>
+    </div>
+    <p class="footer-disclaimer">Product information on this website is intended for healthcare professionals, pharmacists, procurement teams and licensed distributors. It is not medical advice and does not constitute an offer to supply medicines to the public.</p>
+  </div>
+</footer>

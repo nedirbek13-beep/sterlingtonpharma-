@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sterlingtonpharma",
+  "main": "worker.js",
+  "compatibility_date": "2026-05-19",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  }
+  // Secrets (Cloudflare dashboard -> Settings -> Variables, or `wrangler secret put`):
+  //   RESEND_API_KEY  - Resend API key used to deliver contact-form enquiries
+  //   CONTACT_TO      - destination mailbox, e.g. info@sterlingtonpharma.com
+  //   CONTACT_FROM    - optional verified sender, e.g. "Sterlington website <web@sterlingtonpharma.com>"
+}
