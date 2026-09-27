@@ -8,6 +8,9 @@
   'use strict';
   if (/[?&]snap\b/.test(location.search)) document.documentElement.classList.add('snap');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const I18N = window.__i18n || {};
+  const T = (path, fallback) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), I18N) ?? fallback;
+  const fill = (str, vars) => String(str).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   /* ---------- 1. Precision Field ---------- */
@@ -151,13 +154,13 @@
       lastFocus = document.activeElement;
       menu.hidden = false;
       requestAnimationFrame(() => menu.classList.add('is-open'));
-      toggle.setAttribute('aria-expanded', 'true'); toggle.setAttribute('aria-label', 'Close menu');
+      toggle.setAttribute('aria-expanded', 'true'); toggle.setAttribute('aria-label', toggle.dataset.labelClose || T('menuClose', 'Close menu'));
       header.classList.add('is-open'); document.body.classList.add('menu-open');
       setTimeout(() => focusables()[0] && focusables()[0].focus(), 80);
     };
     const closeMenu = () => {
       menu.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open menu');
+      toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', toggle.dataset.labelOpen || T('menuOpen', 'Open menu'));
       header.classList.remove('is-open'); document.body.classList.remove('menu-open');
       const done = () => { menu.hidden = true; };
       reduceMotion.matches ? done() : setTimeout(done, 320);
@@ -177,6 +180,15 @@
     menu.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
     window.matchMedia('(min-width: 1101px)').addEventListener('change', (m) => { if (m.matches && !menu.hidden) closeMenu(); });
   }
+
+  document.querySelectorAll('[data-lang-menu]').forEach((wrap) => {
+    const btn = wrap.querySelector('.lang-btn'), list = wrap.querySelector('.lang-menu');
+    if (!btn || !list) return;
+    const open = (v) => { list.hidden = !v; btn.setAttribute('aria-expanded', String(v)); wrap.classList.toggle('is-open', v); };
+    btn.addEventListener('click', () => open(list.hidden));
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) open(false); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { open(false); btn.focus(); } });
+  });
 
   /* ---------- 3. Reveals & parallax ---------- */
   const revealEls = document.querySelectorAll('[data-reveal]');
@@ -213,10 +225,10 @@
 
     const fields = Array.from(form.querySelectorAll('.fld-input[required], .fld-check[required]'));
     const messages = {
-      valueMissing: 'This field is required.',
-      typeMismatch: 'Enter a valid email address, e.g. name@company.com.',
-      tooShort: 'Please add a little more detail (at least 20 characters).',
-      consent: 'Please confirm you agree to the privacy policy.',
+      valueMissing: T('form.errRequired', 'This field is required.'),
+      typeMismatch: T('form.errEmail', 'Enter a valid email address, e.g. name@company.com.'),
+      tooShort: T('form.errShort', 'Please add a little more detail (at least 20 characters).'),
+      consent: T('form.errConsent', 'Please confirm you agree to the privacy policy.'),
     };
     const errorFor = (el) => {
       let err = form.querySelector('#' + el.id + '-error');
@@ -246,14 +258,14 @@
     });
     const setStatus = (kind, html) => { status.className = 'form-status' + (kind ? ' is-' + kind : ''); status.innerHTML = html || ''; };
     const mailtoFallback = (data) => {
-      const subject = encodeURIComponent(`Enquiry: ${data.type || 'general'} — ${data.organisation || ''}`);
+      const subject = encodeURIComponent(fill(T('form.mailSubject', 'Enquiry: {type} — {organisation}'), { type: data.type || 'general', organisation: data.organisation || '' }));
       const body = encodeURIComponent(Object.entries(data).filter(([k]) => !['website', 'started', 'consent'].includes(k)).map(([k, v]) => `${k}: ${v}`).join('\n'));
       return `mailto:info@sterlingtonpharma.com?subject=${subject}&body=${body}`;
     };
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const ok = fields.map(validate).every(Boolean);
-      if (!ok) { const first = fields.find((el) => el.getAttribute('aria-invalid') === 'true'); first && first.focus(); setStatus('error', 'Please check the highlighted fields and try again.'); return; }
+      if (!ok) { const first = fields.find((el) => el.getAttribute('aria-invalid') === 'true'); first && first.focus(); setStatus('error', T('form.errCheck', 'Please check the highlighted fields and try again.')); return; }
       const data = Object.fromEntries(new FormData(form).entries());
       form.classList.add('is-loading'); submit.setAttribute('aria-busy', 'true'); setStatus('', '');
       try {
@@ -263,13 +275,16 @@
         const wrap = form.parentNode;
         const success = document.createElement('div');
         success.className = 'form-success'; success.setAttribute('tabindex', '-1'); success.setAttribute('role', 'status');
-        success.innerHTML = '<div class="form-success-icon"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M6 13.5 11 18l9-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Thank you. Your enquiry has been received.</h3><p>We aim to respond within one business day. If your enquiry is urgent, call <a href="tel:+447376237959">+44 7376 237959</a>.</p><button class="btn btn--secondary" type="button">Send another enquiry</button>';
+        success.innerHTML = '<div class="form-success-icon"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M6 13.5 11 18l9-10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3></h3><p></p><button class="btn btn--secondary" type="button"></button>';
+        success.querySelector('h3').textContent = T('form.successTitle', 'Thank you. Your enquiry has been received.');
+        success.querySelector('p').innerHTML = T('form.successBody', 'We aim to respond within one business day. If your enquiry is urgent, call <a href="tel:+447376237959">+44 7376 237959</a>.');
+        success.querySelector('button').textContent = T('form.sendAnother', 'Send another enquiry');
         wrap.replaceChild(success, form);
         success.focus();
         success.querySelector('button').addEventListener('click', () => { wrap.replaceChild(form, success); form.reset(); form.classList.remove('is-loading'); submit.removeAttribute('aria-busy'); fields.forEach((el) => el.removeAttribute('aria-invalid')); form.querySelectorAll('.fld-error').forEach((n) => n.remove()); setStatus('', ''); if (started) started.value = String(Date.now()); form.querySelector('.fld-input').focus(); });
       } catch (err) {
         form.classList.remove('is-loading'); submit.removeAttribute('aria-busy');
-        setStatus('error', `We could not send your enquiry just now. Please email us directly at <a href="${mailtoFallback(data)}">info@sterlingtonpharma.com</a> (this link opens a pre-filled email) or call <a href="tel:+447376237959">+44 7376 237959</a>.`);
+        setStatus('error', fill(T('form.errSend', 'We could not send your enquiry just now. Please email us directly at <a href="{mailto}">info@sterlingtonpharma.com</a> (this link opens a pre-filled email) or call <a href="tel:+447376237959">+44 7376 237959</a>.'), { mailto: mailtoFallback(data) }));
       }
     });
   });

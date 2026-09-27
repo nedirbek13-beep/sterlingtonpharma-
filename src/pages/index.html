@@ -1,25 +1,25 @@
-<!--meta {"title":"Sterlington Pharma | Sterile injectable and oral medicines for hospitals and licensed distributors","description":"Sterlington Injectable Pharmaceutical UK Ltd supplies solutions for infusion, powders for infusion and oral suspensions from GMP-certified manufacturers to hospitals, licensed distributors and institutional buyers.","path":"/","nav":"home","bodyClass":"page-home","priority":"1.0","out":"index.html"} -->
+<!--meta {"i18n":"home","path":"/","nav":"home","bodyClass":"page-home","priority":"1.0","out":"index.html"} -->
 <section class="hero" aria-labelledby="hero-title">
   <canvas class="field hero-field" data-field data-field-color="#0b5094" data-field-spacing="96" data-field-alpha="1" aria-hidden="true"></canvas>
   <div class="container hero-in">
     <div class="hero-copy">
-      <p class="eyebrow" data-seq="1">UK-registered pharmaceutical wholesaler · B2B supply</p>
-      <h1 class="h-display" id="hero-title" data-seq="2">Sterile injectables and oral medicines, <em>sourced and supplied with precision.</em></h1>
-      <p class="lead hero-lead" data-seq="3">Sterlington supplies solutions for infusion, powders for infusion and oral suspensions from GMP‑certified manufacturers to hospitals, licensed distributors and institutional buyers.</p>
+      <p class="eyebrow" data-seq="1">{{t.home.eyebrow}}</p>
+      <h1 class="h-display" id="hero-title" data-seq="2">{{{t.home.h1}}}</h1>
+      <p class="lead hero-lead" data-seq="3">{{t.home.lead}}</p>
       <div class="hero-actions" data-seq="4">
-        <a class="btn btn--primary btn--lg" href="/products">Explore products</a>
-        <a class="btn btn--secondary btn--lg" href="/partners">Become a partner</a>
+        <a class="btn btn--primary btn--lg" href="{{base}}/products">{{t.common.explore}}</a>
+        <a class="btn btn--secondary btn--lg" href="{{base}}/partners">{{t.common.partner}}</a>
       </div>
       <dl class="hero-facts" data-seq="5">
-        <div><dt>Products</dt><dd>{{productCount}}</dd></div>
-        <div><dt>Dosage forms</dt><dd>3</dd></div>
-        <div><dt>Company no.</dt><dd><a href="{{site.companiesHouseUrl}}" rel="noopener" target="_blank">{{site.companyNumber}}</a></dd></div>
+        <div><dt>{{t.home.factProducts}}</dt><dd>{{productCount}}</dd></div>
+        <div><dt>{{t.home.factForms}}</dt><dd>3</dd></div>
+        <div><dt>{{t.home.factCompany}}</dt><dd><a href="{{site.companiesHouseUrl}}" rel="noopener" target="_blank">{{site.companyNumber}}</a></dd></div>
       </dl>
     </div>
     <div class="hero-stage" data-parallax aria-hidden="true">
       <div class="hero-shelf"></div>
 {{{heroPacks}}}
-      <p class="hero-stage-caption">SterliX product range</p>
+      <p class="hero-stage-caption">{{t.home.stageCaption}}</p>
     </div>
   </div>
   <div class="facet-edge facet-edge--bottom" aria-hidden="true"></div>
@@ -27,14 +27,14 @@
 
 <section class="trust" aria-labelledby="trust-title">
   <div class="container">
-    <h2 class="visually-hidden" id="trust-title">Verified company information</h2>
+    <h2 class="visually-hidden" id="trust-title">{{t.home.trustTitle}}</h2>
     <ul class="trust-list">
-      <li data-reveal><span class="trust-k">Registered company</span><span class="trust-v">{{site.legalName}} — no. {{site.companyNumber}}, {{site.jurisdiction}}</span><a class="trust-link" href="{{site.companiesHouseUrl}}" rel="noopener" target="_blank">Companies House record</a></li>
-      <li data-reveal data-reveal-delay="1"><span class="trust-k">Registered activity</span><span class="trust-v">Wholesale of pharmaceutical goods (SIC 46460)</span></li>
-      <li data-reveal data-reveal-delay="2"><span class="trust-k">Portfolio</span><span class="trust-v">{{productCount}} products: {{countSolution}} solutions for infusion, {{countPowder}} powders for infusion, {{countSuspension}} oral suspensions</span></li>
-      <li data-reveal data-reveal-delay="3"><span class="trust-k">Supply model</span><span class="trust-v">Business-to-business only — hospitals, licensed distributors and institutional buyers</span></li>
-      <li data-reveal data-reveal-delay="4"><span class="trust-k">Documentation</span><span class="trust-v">Certificates of Analysis, manufacturer GMP certificates and batch records supplied with orders</span></li>
-      <li data-reveal data-reveal-delay="5"><span class="trust-k">Market focus</span><span class="trust-v">Central Asia and international markets</span></li>
+      <li data-reveal><span class="trust-k">{{t.home.trust1k}}</span><span class="trust-v">{{t.home.trust1v}}</span><a class="trust-link" href="{{site.companiesHouseUrl}}" rel="noopener" target="_blank">{{t.common.companiesHouse}}</a></li>
+      <li data-reveal data-reveal-delay="1"><span class="trust-k">{{t.home.trust2k}}</span><span class="trust-v">{{t.home.trust2v}}</span></li>
+      <li data-reveal data-reveal-delay="2"><span class="trust-k">{{t.home.trust3k}}</span><span class="trust-v">{{t.home.trust3v}}</span></li>
+      <li data-reveal data-reveal-delay="3"><span class="trust-k">{{t.home.trust4k}}</span><span class="trust-v">{{t.home.trust4v}}</span></li>
+      <li data-reveal data-reveal-delay="4"><span class="trust-k">{{t.home.trust5k}}</span><span class="trust-v">{{t.home.trust5v}}</span></li>
+      <li data-reveal data-reveal-delay="5"><span class="trust-k">{{t.home.trust6k}}</span><span class="trust-v">{{t.home.trust6v}}</span></li>
     </ul>
   </div>
 </section>
@@ -43,44 +43,44 @@
   <div class="container">
     <div class="section-head section-head--split" data-reveal>
       <div>
-        <p class="eyebrow">Product portfolio</p>
-        <h2 class="h-section" id="portfolio-title">{{productCount}} products, three dosage forms, one documentation standard.</h2>
+        <p class="eyebrow">{{t.home.portfolioEyebrow}}</p>
+        <h2 class="h-section" id="portfolio-title">{{t.home.portfolioTitle}}</h2>
       </div>
-      <p class="lead">Every product in the SterliX range is presented with its generic name, strength, dosage form and pack size. Product documentation is supplied with orders.</p>
+      <p class="lead">{{t.home.portfolioLead}}</p>
     </div>
     <div class="format-tiles" data-reveal data-reveal-delay="1">
-      <a class="ftile ftile--solution" href="/products?form=solution">
+      <a class="ftile ftile--solution" href="{{base}}/products?form=solution">
         <span class="ftile-count">{{countSolution}}</span>
-        <span class="ftile-name">Solutions for infusion</span>
-        <span class="ftile-desc">100 ml bottles, ready to administer intravenously.</span>
-        <span class="ftile-packs"><img src="/assets/products/ciprofloxacin-cut-s.png" srcset="/assets/products/ciprofloxacin-cut-s.webp 229w, /assets/products/ciprofloxacin-cut.webp 228w" sizes="90px" width="228" height="339" alt="" loading="lazy" decoding="async"><img src="/assets/products/paracetamol-iv-cut-s.png" srcset="/assets/products/paracetamol-iv-cut-s.webp 135w, /assets/products/paracetamol-iv-cut.webp 260w" sizes="90px" width="260" height="653" alt="" loading="lazy" decoding="async"></span>
+        <span class="ftile-name">{{t.data.forms.solution.plural}}</span>
+        <span class="ftile-desc">{{t.home.tileSolutionDesc}}</span>
+        <span class="ftile-packs">{{{tileSolution}}}</span>
       </a>
-      <a class="ftile ftile--powder" href="/products?form=powder">
+      <a class="ftile ftile--powder" href="{{base}}/products?form=powder">
         <span class="ftile-count">{{countPowder}}</span>
-        <span class="ftile-name">Powders for infusion</span>
-        <span class="ftile-desc">Single-dose vials, reconstituted before intravenous use.</span>
-        <span class="ftile-packs"><img src="/assets/products/meropenem-cut-s.png" srcset="/assets/products/meropenem-cut-s.webp 129w, /assets/products/meropenem-cut.webp 247w" sizes="90px" width="247" height="653" alt="" loading="lazy" decoding="async"><img src="/assets/products/vancomycin-cut-s.png" srcset="/assets/products/vancomycin-cut-s.webp 133w, /assets/products/vancomycin-cut.webp 256w" sizes="90px" width="256" height="654" alt="" loading="lazy" decoding="async"></span>
+        <span class="ftile-name">{{t.data.forms.powder.plural}}</span>
+        <span class="ftile-desc">{{t.home.tilePowderDesc}}</span>
+        <span class="ftile-packs">{{{tilePowder}}}</span>
       </a>
-      <a class="ftile ftile--suspension" href="/products?form=suspension">
+      <a class="ftile ftile--suspension" href="{{base}}/products?form=suspension">
         <span class="ftile-count">{{countSuspension}}</span>
-        <span class="ftile-name">Oral suspensions</span>
-        <span class="ftile-desc">100 ml bottles for antibiotic and antifungal treatment.</span>
-        <span class="ftile-packs"><img src="/assets/products/amoxicillin-cut-s.png" srcset="/assets/products/amoxicillin-cut-s.webp 134w, /assets/products/amoxicillin-cut.webp 253w" sizes="90px" width="253" height="643" alt="" loading="lazy" decoding="async"><img src="/assets/products/cephalexin-cut-s.png" srcset="/assets/products/cephalexin-cut-s.webp 131w, /assets/products/cephalexin-cut.webp 248w" sizes="90px" width="248" height="644" alt="" loading="lazy" decoding="async"></span>
+        <span class="ftile-name">{{t.data.forms.suspension.plural}}</span>
+        <span class="ftile-desc">{{t.home.tileSuspensionDesc}}</span>
+        <span class="ftile-packs">{{{tileSuspension}}}</span>
       </a>
     </div>
     <div class="pgrid pgrid--featured" data-reveal data-reveal-delay="2">
 {{{featuredCards}}}
     </div>
-    <p class="section-more" data-reveal><a class="btn btn--secondary btn--lg" href="/products">View the full catalogue</a></p>
+    <p class="section-more" data-reveal><a class="btn btn--secondary btn--lg" href="{{base}}/products">{{t.common.viewCatalogue}}</a></p>
   </div>
 </section>
 
 <section class="section section--tint formats" id="formats" aria-labelledby="formats-title">
   <div class="container">
     <div class="section-head" data-reveal>
-      <p class="eyebrow">Pharmaceutical formats</p>
-      <h2 class="h-section" id="formats-title">Three presentations, each handled on its own terms.</h2>
-      <p class="lead">Sterile solutions, lyophilised powders and oral suspensions each carry different handling, storage and documentation requirements. Our portfolio is organised around them.</p>
+      <p class="eyebrow">{{t.home.formatsEyebrow}}</p>
+      <h2 class="h-section" id="formats-title">{{t.home.formatsTitle}}</h2>
+      <p class="lead">{{t.home.formatsLead}}</p>
     </div>
     <div class="format-grid">
       <article class="fmt fmt--solution" data-reveal>
@@ -97,10 +97,10 @@
             </g>
           </svg>
         </div>
-        <h3 class="fmt-name">Solutions for infusion</h3>
-        <p class="fmt-spec"><span>{{countSolution}} products</span><span>100 ml bottle</span><span>Intravenous</span></p>
-        <p>Ready-to-administer sterile solutions for hospital and critical-care use. Supplied with batch documentation and temperature-controlled logistics.</p>
-        <a class="link" href="/products?form=solution">See solutions<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <h3 class="fmt-name">{{t.data.forms.solution.plural}}</h3>
+        <p class="fmt-spec"><span>{{fmtSolutionCount}}</span><span>{{t.home.fmtBottle}}</span><span>{{t.home.fmtIV}}</span></p>
+        <p>{{t.home.fmtSolutionText}}</p>
+        <a class="link" href="{{base}}/products?form=solution">{{t.home.seeSolutions}}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </article>
       <article class="fmt fmt--powder" data-reveal data-reveal-delay="1">
         <div class="fmt-art" aria-hidden="true">
@@ -117,10 +117,10 @@
             </g>
           </svg>
         </div>
-        <h3 class="fmt-name">Powders for infusion</h3>
-        <p class="fmt-spec"><span>{{countPowder}} products</span><span>Single-dose vial</span><span>Intravenous</span></p>
-        <p>Lyophilised powders reconstituted before administration. Pack configuration and vial count are confirmed at quotation.</p>
-        <a class="link" href="/products?form=powder">See powders<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <h3 class="fmt-name">{{t.data.forms.powder.plural}}</h3>
+        <p class="fmt-spec"><span>{{fmtPowderCount}}</span><span>{{t.home.fmtVial}}</span><span>{{t.home.fmtIV}}</span></p>
+        <p>{{t.home.fmtPowderText}}</p>
+        <a class="link" href="{{base}}/products?form=powder">{{t.home.seePowders}}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </article>
       <article class="fmt fmt--suspension" data-reveal data-reveal-delay="2">
         <div class="fmt-art" aria-hidden="true">
@@ -136,10 +136,10 @@
             </g>
           </svg>
         </div>
-        <h3 class="fmt-name">Oral suspensions</h3>
-        <p class="fmt-spec"><span>{{countSuspension}} products</span><span>100 ml bottle</span><span>Oral</span></p>
-        <p>Antibiotic and antifungal suspensions in 100 ml bottles, labelled with strength per 5 ml for clear dispensing.</p>
-        <a class="link" href="/products?form=suspension">See suspensions<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <h3 class="fmt-name">{{t.data.forms.suspension.plural}}</h3>
+        <p class="fmt-spec"><span>{{fmtSuspensionCount}}</span><span>{{t.home.fmtBottle}}</span><span>{{t.home.fmtOral}}</span></p>
+        <p>{{t.home.fmtSuspensionText}}</p>
+        <a class="link" href="{{base}}/products?form=suspension">{{t.home.seeSuspensions}}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </article>
     </div>
   </div>
@@ -149,18 +149,18 @@
   <div class="container">
     <div class="section-head section-head--split" data-reveal>
       <div>
-        <p class="eyebrow">Quality process</p>
-        <h2 class="h-section" id="quality-title">Six controlled steps between the manufacturer and your warehouse.</h2>
+        <p class="eyebrow">{{t.home.qualityEyebrow}}</p>
+        <h2 class="h-section" id="quality-title">{{t.home.qualityTitle}}</h2>
       </div>
-      <p class="lead">We source exclusively from GMP-certified manufacturers and document every order from qualification to delivery. <a class="link-inline" href="/quality">Read the full quality process</a>.</p>
+      <p class="lead">{{{t.home.qualityLead}}}</p>
     </div>
     <ol class="steps">
-      <li class="step" data-reveal><span class="step-n">01</span><div><h3 class="step-h">Supplier qualification</h3><p>Only manufacturers holding current GMP certification are considered, and each completes due diligence before a product is listed.</p></div></li>
-      <li class="step" data-reveal data-reveal-delay="1"><span class="step-n">02</span><div><h3 class="step-h">Product verification</h3><p>Specifications, certificates and batch documentation are checked against the order before release.</p></div></li>
-      <li class="step" data-reveal data-reveal-delay="2"><span class="step-n">03</span><div><h3 class="step-h">Documentation package</h3><p>Certificates of Analysis, the manufacturer's GMP certificate and batch records are compiled for your local regulatory submission.</p></div></li>
-      <li class="step" data-reveal data-reveal-delay="3"><span class="step-n">04</span><div><h3 class="step-h">Cold-chain logistics</h3><p>Temperature-controlled transport from the manufacturer to your warehouse, tracked throughout the route.</p></div></li>
-      <li class="step" data-reveal data-reveal-delay="4"><span class="step-n">05</span><div><h3 class="step-h">Traceability</h3><p>Full batch traceability on every order, so any product can be followed from source to destination.</p></div></li>
-      <li class="step" data-reveal data-reveal-delay="5"><span class="step-n">06</span><div><h3 class="step-h">Post-delivery follow-up</h3><p>We confirm receipt and condition after delivery and remain available for documentation queries.</p></div></li>
+      <li class="step" data-reveal><span class="step-n">01</span><div><h3 class="step-h">{{t.home.step1h}}</h3><p>{{t.home.step1p}}</p></div></li>
+      <li class="step" data-reveal data-reveal-delay="1"><span class="step-n">02</span><div><h3 class="step-h">{{t.home.step2h}}</h3><p>{{t.home.step2p}}</p></div></li>
+      <li class="step" data-reveal data-reveal-delay="2"><span class="step-n">03</span><div><h3 class="step-h">{{t.home.step3h}}</h3><p>{{t.home.step3p}}</p></div></li>
+      <li class="step" data-reveal data-reveal-delay="3"><span class="step-n">04</span><div><h3 class="step-h">{{t.home.step4h}}</h3><p>{{t.home.step4p}}</p></div></li>
+      <li class="step" data-reveal data-reveal-delay="4"><span class="step-n">05</span><div><h3 class="step-h">{{t.home.step5h}}</h3><p>{{t.home.step5p}}</p></div></li>
+      <li class="step" data-reveal data-reveal-delay="5"><span class="step-n">06</span><div><h3 class="step-h">{{t.home.step6h}}</h3><p>{{t.home.step6p}}</p></div></li>
     </ol>
   </div>
 </section>
@@ -169,19 +169,19 @@
   <canvas class="field field--dark" data-field data-field-color="#c7ddf0" data-field-spacing="110" data-field-alpha="0.55" aria-hidden="true"></canvas>
   <div class="container">
     <div class="section-head" data-reveal>
-      <p class="eyebrow eyebrow--light">International partnerships</p>
-      <h2 class="h-section" id="partners-title">Built for the organisations that buy medicines at scale.</h2>
-      <p class="lead">We work with licensed and qualified partners only. Each relationship starts with a documented qualification step and continues with the same documentation standard on every order.</p>
+      <p class="eyebrow eyebrow--light">{{t.home.partnersEyebrow}}</p>
+      <h2 class="h-section" id="partners-title">{{t.home.partnersTitle}}</h2>
+      <p class="lead">{{t.home.partnersLead}}</p>
     </div>
     <div class="aud-grid">
-      <article class="aud" data-reveal><h3 class="aud-h">Licensed distributors</h3><p>Full product documentation, batch records and regulatory support from the first shipment, so you can register and supply with confidence.</p></article>
-      <article class="aud" data-reveal data-reveal-delay="1"><h3 class="aud-h">Hospital procurement</h3><p>Consistent lead times, complete traceability and inspection-ready documentation for hospital and critical-care supply.</p></article>
-      <article class="aud" data-reveal data-reveal-delay="2"><h3 class="aud-h">Pharmacy groups and clinics</h3><p>Oral suspensions and injectables supplied to licensed pharmacy and clinic groups through qualified distribution channels.</p></article>
-      <article class="aud" data-reveal data-reveal-delay="3"><h3 class="aud-h">Public procurement and tenders</h3><p>Documentation packages prepared for tender submissions, with product specifications presented in a consistent, verifiable format.</p></article>
+      <article class="aud" data-reveal><h3 class="aud-h">{{t.home.aud1h}}</h3><p>{{t.home.aud1p}}</p></article>
+      <article class="aud" data-reveal data-reveal-delay="1"><h3 class="aud-h">{{t.home.aud2h}}</h3><p>{{t.home.aud2p}}</p></article>
+      <article class="aud" data-reveal data-reveal-delay="2"><h3 class="aud-h">{{t.home.aud3h}}</h3><p>{{t.home.aud3p}}</p></article>
+      <article class="aud" data-reveal data-reveal-delay="3"><h3 class="aud-h">{{t.home.aud4h}}</h3><p>{{t.home.aud4p}}</p></article>
     </div>
     <div class="partners-cta" data-reveal>
-      <a class="btn btn--light btn--lg" href="/contact?type=distribution">Start a partnership enquiry</a>
-      <a class="link link--light" href="/partners">How partnership works<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn--light btn--lg" href="{{base}}/contact?type=distribution">{{t.common.startPartnership}}</a>
+      <a class="link link--light" href="{{base}}/partners">{{t.common.howPartnership}}<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </section>
@@ -189,26 +189,26 @@
 <section class="section company" id="company" aria-labelledby="company-title">
   <div class="container company-grid">
     <div data-reveal>
-      <p class="eyebrow">The company</p>
-      <h2 class="h-section" id="company-title">A UK-registered wholesaler with one standard: verified medicines, fully documented.</h2>
-      <p class="lead">{{site.legalName}} is registered in {{site.jurisdiction}} as a wholesaler of pharmaceutical goods. We source sterile injectable and oral medicines from GMP-certified manufacturers and supply hospitals, licensed distributors and institutional buyers. We do not sell to the public.</p>
+      <p class="eyebrow">{{t.home.companyEyebrow}}</p>
+      <h2 class="h-section" id="company-title">{{t.home.companyTitle}}</h2>
+      <p class="lead">{{t.home.companyLead}}</p>
       <blockquote class="quote">
-        <p>“We built Sterlington not as a business first, but as a commitment: that every institution we supply can trust what arrives at their door.”</p>
-        <footer><cite>{{site.director}}</cite>, Director</footer>
+        <p>{{t.common.quote}}</p>
+        <footer><cite>{{site.director}}</cite>, {{t.common.quoteRole}}</footer>
       </blockquote>
-      <a class="btn btn--secondary" href="/company">About Sterlington</a>
+      <a class="btn btn--secondary" href="{{base}}/company">{{t.home.aboutBtn}}</a>
     </div>
     <div class="facts" data-reveal data-reveal-delay="1">
-      <h3 class="facts-h">Company record</h3>
+      <h3 class="facts-h">{{t.common.record}}</h3>
       <dl class="facts-list">
-        <div><dt>Registered name</dt><dd>{{site.legalName}}</dd></div>
-        <div><dt>Company number</dt><dd><a href="{{site.companiesHouseUrl}}" rel="noopener" target="_blank">{{site.companyNumber}}</a></dd></div>
-        <div><dt>Incorporated</dt><dd>{{site.incorporated}}, {{site.jurisdiction}}</dd></div>
-        <div><dt>Registered office</dt><dd>{{site.registeredOffice}}</dd></div>
-        <div><dt>Registered activity</dt><dd>Wholesale of pharmaceutical goods (SIC 46460)</dd></div>
-        <div><dt>Director</dt><dd>{{site.director}}</dd></div>
+        <div><dt>{{t.common.registeredName}}</dt><dd>{{site.legalName}}</dd></div>
+        <div><dt>{{t.common.companyNumber}}</dt><dd><a href="{{site.companiesHouseUrl}}" rel="noopener" target="_blank">{{site.companyNumber}}</a></dd></div>
+        <div><dt>{{t.common.incorporated}}</dt><dd>{{t.meta.dateIncorporated}}, {{jurisdiction}}</dd></div>
+        <div><dt>{{t.common.registeredOffice}}</dt><dd>{{site.registeredOffice}}</dd></div>
+        <div><dt>{{t.common.activity}}</dt><dd>{{t.common.activityValue}}</dd></div>
+        <div><dt>{{t.common.director}}</dt><dd>{{site.director}}</dd></div>
       </dl>
-      <p class="facts-note">Source: Companies House public register.</p>
+      <p class="facts-note">{{t.common.source}}</p>
     </div>
   </div>
 </section>
@@ -216,15 +216,15 @@
 <section class="section section--tint contact" id="contact" aria-labelledby="contact-title">
   <div class="container contact-grid">
     <div class="contact-side" data-reveal>
-      <p class="eyebrow">Contact</p>
-      <h2 class="h-section" id="contact-title">Start the conversation.</h2>
-      <p class="lead">We welcome enquiries from licensed distributors, hospital procurement teams and institutional buyers. Every enquiry is handled in confidence.</p>
+      <p class="eyebrow">{{t.home.contactEyebrow}}</p>
+      <h2 class="h-section" id="contact-title">{{t.home.contactTitle}}</h2>
+      <p class="lead">{{t.home.contactLead}}</p>
       <ul class="contact-list">
-        <li><span class="contact-k">Phone / WhatsApp</span><a href="{{site.phoneHref}}">{{site.phone}}</a></li>
-        <li><span class="contact-k">Email</span><a href="mailto:{{site.email}}">{{site.email}}</a></li>
-        <li><span class="contact-k">Registered office</span><span>{{site.registeredOffice}}</span></li>
+        <li><span class="contact-k">{{t.common.phoneLabel}}</span><a href="{{site.phoneHref}}">{{site.phone}}</a></li>
+        <li><span class="contact-k">{{t.common.emailLabel}}</span><a href="mailto:{{site.email}}">{{site.email}}</a></li>
+        <li><span class="contact-k">{{t.common.registeredOffice}}</span><span>{{site.registeredOffice}}</span></li>
       </ul>
-      <p class="contact-note">Please tell us which products, quantities and destination market you have in mind. We aim to respond within one business day.</p>
+      <p class="contact-note">{{t.home.contactNote}}</p>
     </div>
     <div class="contact-form-wrap" data-reveal data-reveal-delay="1">
 {{> contact-form}}

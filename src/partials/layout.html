@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{lang}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{page.title}}</title>
 <meta name="description" content="{{page.description}}">
 <link rel="canonical" href="{{canonical}}">
+{{{alternates}}}
 <meta name="theme-color" content="#ffffff">
 <script>document.documentElement.classList.add('js')</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sterlington Pharma">
+<meta property="og:locale" content="{{locale}}">
 <meta property="og:title" content="{{page.title}}">
 <meta property="og:description" content="{{page.description}}">
 <meta property="og:url" content="{{canonical}}">
@@ -25,17 +27,19 @@
 <link rel="preload" href="/assets/fonts/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/source-serif-4-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+{{{fontPreloads}}}
 <link rel="stylesheet" href="/assets/css/site.min.css">
 {{{extraHead}}}
 {{{jsonLd}}}
 </head>
-<body class="{{bodyClass}}" data-header-theme="{{headerTheme}}">
-<a class="skip-link" href="#main">Skip to content</a>
+<body class="{{bodyClass}}" data-header-theme="{{headerTheme}}" data-lang="{{lang}}">
+<a class="skip-link" href="#main">{{t.common.skip}}</a>
 {{> header}}
 <main id="main" tabindex="-1">
 {{{content}}}
 </main>
 {{> footer}}
+<script>window.__i18n={{{i18nJson}}}</script>
 <script src="/assets/js/site.js" defer></script>
 {{{extraScripts}}}
 </body>

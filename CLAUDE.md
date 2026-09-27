@@ -19,6 +19,7 @@ without written confirmation from the owner.
 - Static site, no framework, no runtime dependencies. Pages are **generated** by `node tools/build.mjs` from `src/`.
 - Edit `src/` only. Root-level `*.html`, `products/*.html` and `sitemap.xml` are build output (committed so Cloudflare needs no build step).
 - Product data lives in `src/data/products.json` (single source of truth). Company facts in `src/data/site.json`.
+- The site is multilingual: English at `/`, Russian `/ru`, Turkmen `/tk`, Azerbaijani `/az`. ALL copy lives in `src/i18n/<lang>.json` with identical keys; templates only reference `{{t.*}}`. Never hard-code visible text in templates. Placeholders in braces are filled by the build (`{n}` = product count, `{count}`/`{num}` per item).
 - Styles: `assets/css/site.css` (tokens at the top). Behaviour: `assets/js/site.js`, `assets/js/catalogue.js`.
 - Contact form backend: `lib/contact-handler.js` used by `worker.js` (Workers) and `functions/api/contact.js` (Pages).
 - Local preview: `node tools/serve.mjs` → http://localhost:8792 (clean URLs like production).
@@ -35,6 +36,7 @@ without written confirmation from the owner.
 
 ## Pharmaceutical content rules
 - Preserve product names, strengths, dosage forms and pack sizes exactly as in `products.json`. Never "correct" them silently — flag doubts to the owner.
+- Product trade names stay in Latin in every language (as printed on the packs). Russian pages add the Cyrillic INN as secondary information (`data.products.<slug>.inn` in `ru.json`).
 - No indications, dosing, safety claims or regulatory status beyond what the owner supplies in writing.
 - Product descriptions (`desc`) are the owner's original copy; they are shown as short class descriptions only.
 - Product expiry dates on record (`expiryOnRecord`) are kept in the data but are **not** displayed.

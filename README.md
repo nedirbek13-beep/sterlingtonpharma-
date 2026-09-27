@@ -10,6 +10,7 @@ B2B wholesaler of sterile injectable and oral medicines. Not a consumer pharmacy
 index.html, products.html, quality.html, company.html,   ← generated pages (committed, deployable as-is)
 partners.html, contact.html, privacy.html, legal.html, 404.html
 products/<slug>.html                                    ← 19 generated product pages
+ru/, tk/, az/                                           ← the same pages in Russian, Turkmen and Azerbaijani
 assets/css/site.css        design tokens + components
 assets/js/site.js          field motif, navigation, reveals, contact form
 assets/js/catalogue.js     product search and filters
@@ -17,6 +18,7 @@ assets/products/           pack renders (jpg/webp) and keyed cut-outs (png/webp)
 assets/img/                logo, icons, facet pattern masks, og-image.jpg
 src/data/products.json     THE product data — edit products here
 src/data/site.json         company facts, contact details
+src/i18n/{en,ru,tk,az}.json  all site copy per language (English is the source; the others mirror its keys)
 src/pages/*.html           page sources (body markup + meta block)
 src/partials/*.html        layout, header, footer, contact form
 src/templates/product.html product page template
@@ -40,6 +42,12 @@ Edit `src/data/products.json`. Each product needs: `slug`, `name`, `active`, `ca
 `form` (`solution` | `powder` | `suspension`), `class`, `strengths[]`, `formText`, `pack`, `code`, `desc`, `accent` (the
 colour of the pack's dosage-form band) and images in `assets/products/`: `<slug>.jpg`, `<slug>.webp`,
 `<slug>-cut.png`, `<slug>-cut.webp` (pack on a transparent background). Then run the build.
+
+### Change site copy or add a language
+All visible text lives in `src/i18n/<lang>.json` (one file per language, same keys in each). Edit the text there and
+rebuild. To add a language, copy `en.json`, translate every value, add its code to `LANGS` in `tools/build.mjs` and the
+`fontPreloads` map, then rebuild — the language switcher, hreflang links and sitemap update automatically.
+Product-specific translations (dosage-form names, class labels, descriptions, Russian INN) sit under `data` in each file.
 
 ## Contact form delivery
 The form posts JSON to `/api/contact`. On Cloudflare the handler (`lib/contact-handler.js`) sends the enquiry by email

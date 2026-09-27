@@ -14,6 +14,8 @@
   const blocks = Array.from(document.querySelectorAll('[data-cat-block]'));
   const total = cards.length;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const I18N = (window.__i18n && window.__i18n.catalogue) || {};
+  const fill = (str, vars) => String(str).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
   const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const classKey = (label) => { const l = norm(label); if (l.includes('antibiotic')) return 'antibiotic'; if (l.includes('antifungal')) return 'antifungal'; if (l.includes('analgesic')) return 'analgesic'; if (l.includes('metabolic')) return 'metabolic'; return 'other'; };
   cards.forEach((c) => { c.dataset.hay = norm([c.dataset.name, c.dataset.active, c.dataset.code, c.dataset.class, c.dataset.strengths].join(' ')); c.dataset.ck = classKey(c.dataset.class); });
@@ -34,7 +36,7 @@
       b.classList.toggle('is-empty', n === 0);
       const counter = b.querySelector('[data-cat-count]'); if (counter) counter.textContent = n;
     });
-    count.textContent = shown === total ? `Showing all ${total} products` : `Showing ${shown} of ${total} products`;
+    count.textContent = shown === total ? fill(I18N.showingAll || 'Showing all {total} products', { total }) : fill(I18N.showing || 'Showing {shown} of {total} products', { shown, total });
     empty.hidden = shown !== 0;
     const active = !!(s.q || s.cat || s.form || s.ck);
     resets.forEach((r) => { if (r.closest('[data-toolbar]')) r.hidden = !active; });
