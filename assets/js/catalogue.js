@@ -15,7 +15,7 @@
   const total = cards.length;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const I18N = (window.__i18n && window.__i18n.catalogue) || {};
-  const fill = (str, vars) => String(str).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+  const fill = (str, vars) => String(str).replace(/\{(\w+):([^}|]*)\|([^}|]*)\|([^}]*)\}/g, (m, k, one, few, many) => { if (!(k in vars)) return m; const n = Math.abs(Number(vars[k])) % 100, n1 = n % 10; return [one, few, many][n > 10 && n < 20 ? 2 : n1 === 1 ? 0 : n1 >= 2 && n1 <= 4 ? 1 : 2]; }).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
   const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const classKey = (label) => { const l = norm(label); if (l.includes('antibiotic')) return 'antibiotic'; if (l.includes('antifungal')) return 'antifungal'; if (l.includes('analgesic')) return 'analgesic'; if (l.includes('metabolic')) return 'metabolic'; return 'other'; };
   cards.forEach((c) => { c.dataset.hay = norm([c.dataset.name, c.dataset.active, c.dataset.code, c.dataset.class, c.dataset.strengths].join(' ')); c.dataset.ck = classKey(c.dataset.class); });

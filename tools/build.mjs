@@ -23,7 +23,9 @@ const dicts = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(read(path.join(
 /* ---------- helpers ---------- */
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const attr = (s) => esc(s).replace(/\s+/g, ' ');
-const fmt = (str, vars) => String(str).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+const slavicForm = (count) => { const n = Math.abs(Number(count)) % 100, n1 = n % 10; return n > 10 && n < 20 ? 2 : n1 === 1 ? 0 : n1 >= 2 && n1 <= 4 ? 1 : 2; };
+/** {key} substitution plus {key:one|few|many} plural forms (Slavic rule, used by the Russian dictionary) */
+const fmt = (str, vars) => String(str).replace(/\{(\w+):([^}|]*)\|([^}|]*)\|([^}]*)\}/g, (m, k, one, few, many) => (k in vars ? [one, few, many][slavicForm(vars[k])] : m)).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
 /** plural-aware formatting: a string, or {one, few, many} chosen by `count` (Slavic rules; other languages use a plain string) */
 const fmtCount = (tpl, count) => {
   if (typeof tpl === 'string') return fmt(tpl, { count });
@@ -81,7 +83,7 @@ function langContext(lang) {
     const pt = (t.data.products && t.data.products[p.slug]) || {};
     const formT = t.data.forms[p.form] || en.data.forms[p.form];
     const catT = t.data.categories[p.cat] || en.data.categories[p.cat];
-    return { ...p, formLabel: formT.label, formPlural: formT.plural, presentation: formT.presentation, route: formT.route, catLabel: catT.label, catBlurb: catT.blurb,
+    return { ...p, formLabel: formT.label, formShort: formT.short || '', formPlural: formT.plural, presentation: formT.presentation, route: formT.route, catLabel: catT.label, catBlurb: catT.blurb,
       classLabel: (t.data.classes && t.data.classes[p.class]) || p.class, desc: pt.desc || p.desc, inn: pt.inn || '', formTextL: pt.formText || p.formText, url: `${base}/products/${p.slug}` };
   });
   return { lang, dict, base, home, t, en, globals, L, jurisdiction: globals.jurisdiction };
@@ -98,7 +100,8 @@ const picture = (p, { cut = true, lazy = true, sizes = '(max-width: 640px) 30vw,
   return `<picture><source type="image/webp" srcset="${set('webp')}" sizes="${sizes}"><img class="${cls}" src="${base}.png" srcset="${set('png')}" sizes="${sizes}" width="${size.w}" height="${size.h}" alt="${alt}" ${loading}></picture>`;
 };
 const arrow = '<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const formTagHtml = (p, t) => `<span>${esc(p.formLabel)}</span><span class="pcard-tag-size"> · ${p.form === 'powder' ? esc(t.common.vial) : esc(p.pack)}</span>`;
+const packLabel = (p, t) => (p.pack === '100 ml' ? t.common.ml100 : p.pack);
+const formTagHtml = (p, t) => `<span>${esc(p.formShort || p.formLabel)}</span><span class="pcard-tag-size"> · ${p.form === 'powder' ? esc(t.common.vial) : esc(packLabel(p, t))}</span>`;
 
 function productCard(p, ctx, { lazy = true, tag = 'h3' } = {}) {
   const { t } = ctx;
@@ -188,12 +191,12 @@ for (const lang of LANGS) {
   for (const p of L) {
     const related = L.filter((x) => x.cat === p.cat && x.slug !== p.slug).slice(0, 3);
     const others = related.length < 3 ? L.filter((x) => x.form === p.form && x.cat !== p.cat && x.slug !== p.slug).slice(0, 3 - related.length) : [];
-    const pv = { name: p.name, active: p.active, strength: p.strengths[0], strengths: p.strengths.join(', '), form: p.formLabel.toLowerCase(), formText: p.formTextL, code: p.code, category: p.catLabel, presentation: p.presentation, pack: p.pack };
+    const pv = { name: p.name, active: p.active, strength: p.strengths[0], strengths: p.strengths.join(', '), form: p.formLabel.toLowerCase(), formText: p.formTextL, code: p.code, category: p.catLabel, presentation: p.presentation, pack: packLabel(p, t) };
     const page = { title: fmt(t.product.title, pv), description: fmt(t.product.description, pv), path: `/products/${p.slug}`, nav: 'products', bodyClass: `page-product form-${p.form}`, priority: '0.8' };
     const specRows = [
       [t.product.rowBrand, esc(t.product.rowBrandValue)], [t.product.rowName, esc(p.name)], [t.product.rowActive, esc(p.active) + (p.inn ? ` <span class="spec-note">(${esc(p.inn)})</span>` : '')], [t.product.rowStrength, esc(p.strengths.join(' · '))],
-      [t.product.rowForm, `${esc(p.formLabel)} <span class="spec-note">(${esc(p.formTextL)})</span>`], [t.product.rowRoute, esc(p.route)],
-      [t.product.rowPack, p.form === 'powder' ? esc(fmt(t.product.rowPackPowder, pv)) : `${esc(p.pack)} — ${esc(p.presentation)}`],
+      [t.product.rowForm, p.formTextL.toLowerCase() === p.formLabel.toLowerCase() ? esc(p.formLabel) : `${esc(p.formLabel)} <span class="spec-note">(${esc(p.formTextL)})</span>`], [t.product.rowRoute, esc(p.route)],
+      [t.product.rowPack, p.form === 'powder' ? esc(fmt(t.product.rowPackPowder, pv)) : esc(p.presentation)],
       [t.product.rowCode, `<code>${p.code}</code>`], [t.product.rowCategory, esc(p.catLabel)], [t.product.rowClass, esc(p.classLabel)], [t.product.rowSupply, esc(t.product.rowSupplyValue)],
     ];
     const productJsonLd = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Product', name: `${p.name} ${p.strengths[0]}`, alternateName: `${site.brandLine} ${p.name}`, sku: p.code, brand: { '@type': 'Brand', name: site.brandLine }, manufacturer: { '@type': 'Organization', name: site.legalName }, image: site.domain + `/assets/products/${p.slug}.jpg`, description: fmt(t.product.description, pv), category: p.catLabel, url: urlFor(lang, page.path), audience: { '@type': 'MedicalAudience', audienceType: 'Healthcare professionals and licensed distributors' } });

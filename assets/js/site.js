@@ -10,7 +10,7 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const I18N = window.__i18n || {};
   const T = (path, fallback) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), I18N) ?? fallback;
-  const fill = (str, vars) => String(str).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+  const fill = (str, vars) => String(str).replace(/\{(\w+):([^}|]*)\|([^}|]*)\|([^}]*)\}/g, (m, k, one, few, many) => { if (!(k in vars)) return m; const n = Math.abs(Number(vars[k])) % 100, n1 = n % 10; return [one, few, many][n > 10 && n < 20 ? 2 : n1 === 1 ? 0 : n1 >= 2 && n1 <= 4 ? 1 : 2]; }).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   /* ---------- 1. Precision Field ---------- */
